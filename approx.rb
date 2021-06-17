@@ -21,5 +21,10 @@ m.each_with_index do|el, row, col|
   end 
 end
 
+m.rows.each_with_index do |r, ind|
+
+  puts r.inspect
+
+end
 puts m.inspect
 
