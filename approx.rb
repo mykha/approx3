@@ -23,3 +23,15 @@ end
 
 puts m.inspect
 
+m.each_with_index do|el, row, col|
+  #byebug
+  if row >= 1
+    if col == 1 
+      fk = 1/el
+    end
+    m[row,col] = el * fk
+  end
+end
+
+puts m.inspect
+
