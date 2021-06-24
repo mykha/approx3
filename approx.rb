@@ -31,7 +31,11 @@ def solve(mx)
   return dec
 end
 
-m = Matrix[[2.0,4.0,1.0, 5.0],[-1.0,-6.0,3.0, 3.0], [7.0,-2.0,3.0, -4.0]]
+m = Matrix[[2,4.0,1, 5.0],[-1.0,-6.0,3.0, 3.0], [7.0,-2.0,3.0, -4.0]]
+puts m.inspect
+
+m.map!(&:to_f)
+
 puts m.inspect
 
 puts solve(m)
