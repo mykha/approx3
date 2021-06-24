@@ -10,7 +10,11 @@ def solve(mx)
       #byebug
       if row >= st && col >= st
         if col == st 
-            fk = 1/el
+            unless el==0 
+              fk = 1/el 
+            else  
+              fk = 0 
+            end
         end
         mx[row,col] = el * fk
       end
