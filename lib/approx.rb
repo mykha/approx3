@@ -27,7 +27,7 @@ def solve(mx)
       end 
     end
     #byebug
-    puts st;
+    #puts st;
   end
   dec[:x3]=mx[2,3]/mx[2,2]
   dec[:x2]=(mx[1,3]-mx[1,2]*dec[:x3])/mx[1,1]
@@ -35,13 +35,12 @@ def solve(mx)
   return dec
 end
 
+#test example
+=begin
 m = Matrix[[2,4.0,1, 5.0],[-1.0,-6.0,3.0, 3.0], [7.0,-2.0,3.0, -4.0]]
 puts m.inspect
-
 m.map!(&:to_f)
-
 puts m.inspect
-
 puts solve(m)
-
 puts m.inspect
+=end
