@@ -35,6 +35,26 @@ def solve(mx)
   return dec
 end
 
+def solve_vectors(mx)
+
+  mx[0] /= mx[0][0]
+  mx[1] -= mx[0] * mx[1][0]
+  mx[2] -= mx[0] * mx[2][0]
+
+  mx[1] /= mx[1][1]
+  mx[2] -= mx[1] * mx[2][1]
+
+  mx[2] /= mx[2][2]
+
+  mx[1] -= mx[2] * mx[1][2]
+  mx[0] -= mx[2] * mx[0][2]
+
+  mx[0] -= mx[1] * mx[0][1]
+
+  dec = mx.map{ |vector| vector.to_a }.transpose[-1]
+
+  return {x1: dec[0], x2: dec[1], x3: dec[2]}
+end
 #test example
 =begin
 m = Matrix[[2,4.0,1, 5.0],[-1.0,-6.0,3.0, 3.0], [7.0,-2.0,3.0, -4.0]]
