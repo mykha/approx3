@@ -55,6 +55,13 @@ def solve_vectors(mx)
 
   return {x1: dec[0], x2: dec[1], x3: dec[2]}
 end
+@transformer = lambda do |x, func, coefficients|
+  y = 0
+  func.each_with_index do |item, index|
+    y = y + coefficients[index]*item[x]
+  end
+  return y
+end
 #test example
 =begin
 m = Matrix[[2,4.0,1, 5.0],[-1.0,-6.0,3.0, 3.0], [7.0,-2.0,3.0, -4.0]]
