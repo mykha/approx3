@@ -45,29 +45,31 @@ end
 def general_deviation (data, func, coefficients)
   dev = 0
   data.each do |data_item|
-    y = @transformer[data_item[:x], func, coefficients]
+    y = func[:equation][coefficients[0], coefficients[1], coefficients[2],data_item[:x]]
     dev += (y - data_item[:y]).abs
   end
   return dev
 end
 def max_deviation (data, func, coefficients)
-  y = @transformer[data[0][:x], func, coefficients]
+  y = func[:equation][coefficients[0], coefficients[1], coefficients[2], data[0][:x]]
   dev = (y - data[0][:y]).abs
   data.each do |data_item|
-    y = @transformer[data_item[:x], func, coefficients]
+    y = func[:equation][coefficients[0], coefficients[1], coefficients[2], data_item[:x]]
     new_dev = (y - data_item[:y]).abs
     dev = new_dev if new_dev < dev
   end
   return dev
 end
 def deviation (data_item, func, coefficients)
-  y = @transformer[data_item[:x], func, coefficients]
+  y = func[:equation][coefficients[0], coefficients[1], coefficients[2], data_item[:x]]
   return (y - data_item[:y]).abs
 end
 
 f1 = lambda {|a,b,c, x| a*x**2+b*x+c}
-f1 = [-> (x){x*x}, -> (x){x}, ->(x){1}]
-
+f1 = {terms: [-> (x,y){x*x/y}, -> (x,y){x/y}, ->(x,y){1/y}], equation: -> (a,b,c,x){a*x*x+b*x+c}}
+f2 = {terms: [-> (x,y){x*y}, -> (x,y){y}, ->(x,y){y/x}], equation: -> (a,b,c,x){x/(a*x*x+b*x+c)}}
+f3 = [-> (x){1/(x*x)}, -> (x){1/x}, ->(x){1}]
+functions = [f1,f2]
 
 arr=[]
 array = []
@@ -76,10 +78,10 @@ i=-1
 data = data_from_file
 all_equations = []
 data.each do |data_item|
-  f1.each_with_index do |item, index|
-    arr[index] = item[data_item[:x]]
+  f1[:terms].each_with_index do |item, index|
+    arr[index] = item[data_item[:x], data_item[:y]]
   end
-  arr[3] = data_item[:y]
+  arr[3] = 1
   all_equations[i+=1] = Vector[*arr.map!(&:to_f)]
 end
 
@@ -105,7 +107,7 @@ d = best_solution
 puts d.inspect
 puts min_dev
 data.each do |data_item|
-  puts "x=#{data_item[:x]}; y=#{data_item[:y]}; y'=#{@transformer[data_item[:x],f1, d.values]}; deviation = #{deviation(data_item, f1, d.values)}"
+  puts "x=#{data_item[:x]}; y=#{data_item[:y]}; y'=#{f1[:equation][d.values[0], d.values[1], d.values[2],data_item[:x]]}; deviation = #{deviation(data_item, f1, d.values)}"
 end
 
 #puts m.inspect
