@@ -19,7 +19,11 @@ f3 = { terms: [->(x, y) { x * y }, ->(_x, y) { y }, ->(x, y) { y / x }], equatio
 functions = [f1, f2, f3]
 # functions = [f2, f3]
 
-data = data_from_file
+if ARGV.count == 0
+  data = data_from_public
+else
+  data = data_from_file ARGV[0]
+end
 best_solution = {}
 
 # get a first approximation
