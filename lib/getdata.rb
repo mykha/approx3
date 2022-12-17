@@ -3,7 +3,7 @@ def data_from_file
   data = []
   m.each do |fname|
     #if fname[-4..fname.size] == ".txt"
-     if fname[-5..fname.size] == "2.txt"
+     if fname[-8..fname.size] == "data.txt"
       input = File.open "./public/"+fname, "r"
       while (line = input.gets)
         coup = line.split " "

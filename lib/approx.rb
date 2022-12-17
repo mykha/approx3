@@ -105,8 +105,11 @@ end
 def general_deviation (data, func, coefficients)
   dev = 0
   data.each do |data_item|
-    y = func[:equation][coefficients[0], coefficients[1], coefficients[2],data_item[:x]]
-    dev += (y - data_item[:y]).abs
+    y = func[:equation][coefficients[0], coefficients[1], coefficients[2], data_item[:x]]
+    #puts "Infinity !" unless !y.infinite?
+    if !y.infinite?
+      dev += (y - data_item[:y]).abs
+    end
   end
   return dev
 end
