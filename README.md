@@ -14,7 +14,7 @@ The program performs an approximation of an array of points with three functions
   * git clone https://github.com/mykha/approx3
   * cd approx3
 * Run program to approximate your data
-  * ruby main.rb  \<your data file name\>
+  * ruby main.rb  *\<your data file name\>*
     or you can run demo 
   * ruby main.rb 2.txt
 ## Entrance
