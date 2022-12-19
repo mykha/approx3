@@ -47,7 +47,8 @@ The program performs an average approximation for each function, calculates the 
 
 Something like that
 
-``Approximation of an array of points
+```
+Approximation of an array of points
 [{:x=>-3.0, :y=>8.5}, {:x=>-2.0, :y=>4.2}, {:x=>-1.0, :y=>0.9}, {:x= >0.0, :y=>0.01}, {:x=>1.0, :y=>1.1}, {:x=>2.0, :y=>4.2}, {:x=>3.0, :y=>10.0 }, {:x=>4.0, :y=>18.0}]
 by functions:
 1. Y = A*x*x + B*x + C
@@ -65,4 +66,5 @@ x=0.0; y=0.01; y'=0.008855200533837716; deviation = 0.0011447994661622843
 x=1.0; y=1.1; y'=1.2509708470791865; deviation = 0.1509708470791864
 x=2.0; y=4.2; y'=4.588658893357616; deviation = 0.38865889335761583
 x=3.0; y=10.0; y'=10.021919339369125; deviation = 0.021919339369125268
-x=4.0; y=18.0; y'=17.55075218511372; deviation = 0.44924781488628085``
+x=4.0; y=18.0; y'=17.55075218511372; deviation = 0.44924781488628085
+```
