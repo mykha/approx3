@@ -15,11 +15,22 @@ The program performs an approximation of an array of points with three functions
   * cd approx3
 * Run program to approximate your data
   * ruby main.rb  *\<your data file name\>*
-    or you can run demo 
+       + or you can run demo 
   * ruby main.rb 2.txt
 ## Entrance
 The source data is a text file with point coordinate values. The $x$ and $y$ values are separated by a space, each point (pair of values) is on a new line.
 For best results, the number of specified points should be greater than 3.
+For instance
+```
+-3 8.5
+-2 4.2
+-1 0.9
+0 0.01
+1 1.1
+2 4.2
+3 10
+4 18
+```
 ## Exit
 The result of the program is a 
 + function selected by the program from three options
