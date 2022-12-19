@@ -31,10 +31,16 @@ The program performs an average approximation for each function, calculates the 
 
 ## Description of work
 1. The program selects the functions in order and performs steps 2,3,4 thousand times for each of them.
+
 2. A given array of points of $n$ elements, - values $(x, y)$, - the program substitutes into the equation of the function, thus obtaining $n$ equations, where the coefficients $A$, $B$, $C$ are the desired values.
+
 3. To calculate the values of $A$, $B$, and $C$, three equations are enough, so the program:
     1. Randomly divides $n$ equations into three groups,
     2. Performs the addition of the equations in each group, thus obtaining three equations
     3. Solves the resulting system of 3 equations using the Gauss method, finds the desired values $A$, $B$, $C$.
-4. Next, the program for each point substitutes the values $x$, $A$, $B$, $C$ into the equation of the function and receives the calculated value $y'$, compares it with the given value $y$ and calculates the deviation.
-5. Performing points 2,3,4 for each function with coefficients $A$, $B$, $C$, the program calculates the general deviation $$\sum_{i=0}^n |y(i)-y'(i)|$$
+
+4. Next, the program for each point substitutes the values $x$, $A$, $B$, $C$ into the equation of the function and receives the calculated value $y'$, compares it with the given value $y$ and calculates the deviation $|y(i)-y'(i)|$.
+   
+5. After calculating the general deviation $\sum_{i=0}^n |y(i)-y'(i)|$ 1000 times, the program selects the best result.
+   
+6. Performing points 2,3,4 for each function with coefficients $A$, $B$, $C$, the program calculates the general deviation 
